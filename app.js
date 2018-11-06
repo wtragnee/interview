@@ -9,6 +9,7 @@ const MIN_VALUE = process.env.MIN_VALUE || 100;
 const MAX_VALUE = process.env.MAX_VALUE || 1000;
 const FAIL_RATE = process.env.FAIL_RATE || 0.2;
 
+// GET http://localhost:3232/reference/ponies
 app.get('/reference/:refId', (req, res) => {
   if (!req.params.refId) {
     console.error('Missing refId');
@@ -19,6 +20,7 @@ app.get('/reference/:refId', (req, res) => {
   });
 });
 
+// GET http://localhost:3232/rate?to=euro&from=dollar
 app.get('/rate', (req, res) => {
   if (parseFloat(FAIL_RATE) > _.random(0, 1, true)) {
     console.error('Request failed!');
